@@ -4,7 +4,7 @@ TypeScript client library for Ollama with a web chat interface.
 
 ## Requirements
 
-- Node.js 18+
+- Node.js 24+
 - Ollama running on `localhost:11434`
 - A model pulled (e.g., `ollama pull qwen3:14b`)
 
