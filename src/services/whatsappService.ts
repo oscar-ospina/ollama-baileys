@@ -5,6 +5,7 @@ import makeWASocket, {
   proto,
 } from '@whiskeysockets/baileys';
 import { Boom } from '@hapi/boom';
+import * as qrcode from 'qrcode-terminal';
 import { OllamaClient } from '../client';
 import { ChatMessage } from '../types';
 import { config } from '../config';
@@ -23,13 +24,17 @@ class WhatsAppService {
 
     this.socket = makeWASocket({
       auth: state,
-      printQRInTerminal: true,
     });
 
     this.socket.ev.on('creds.update', saveCreds);
 
     this.socket.ev.on('connection.update', (update) => {
-      const { connection, lastDisconnect } = update;
+      const { connection, lastDisconnect, qr } = update;
+
+      if (qr) {
+        console.log('Scan this QR code with WhatsApp:');
+        qrcode.generate(qr, { small: true });
+      }
 
       if (connection === 'close') {
         const shouldReconnect =

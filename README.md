@@ -8,7 +8,7 @@ Last updated: 2026-02-04
 
 - Node.js 24+
 - Ollama running on `localhost:11434`
-- A model pulled (e.g., `ollama pull qwen3:14b`)
+- A model pulled (e.g., `ollama pull qwen3:8b`)
 
 ## Installation
 
@@ -43,11 +43,11 @@ Open http://localhost:3000 in your browser.
 ### Programmatic Usage
 
 ```typescript
-import { OllamaClient } from './src';
+import { OllamaClient } from "./src";
 
 const client = new OllamaClient();
-const response = await client.chat('qwen3:14b', [
-  { role: 'user', content: 'Hello' }
+const response = await client.chat("qwen3:8b", [
+  { role: "user", content: "Hello" },
 ]);
 
 console.log(response.message.content);
@@ -63,12 +63,12 @@ npm run example
 
 Environment variables:
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `PORT` | `3000` | Web server port |
-| `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama API URL |
-| `DEFAULT_MODEL` | `qwen3:14b` | Default model for chat |
-| `WHATSAPP_AUTH_DIR` | `auth_info` | Directory for WhatsApp credentials |
+| Variable            | Default                  | Description                        |
+| ------------------- | ------------------------ | ---------------------------------- |
+| `PORT`              | `3000`                   | Web server port                    |
+| `OLLAMA_BASE_URL`   | `http://localhost:11434` | Ollama API URL                     |
+| `DEFAULT_MODEL`     | `qwen3:8b`               | Default model for chat             |
+| `WHATSAPP_AUTH_DIR` | `auth_info`              | Directory for WhatsApp credentials |
 
 ## API Endpoints
 
