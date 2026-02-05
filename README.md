@@ -1,6 +1,8 @@
 # ollama-baileys
 
-TypeScript client library for Ollama with a web chat interface.
+TypeScript client library for Ollama with web chat interface and WhatsApp bot integration.
+
+Last updated: 2026-02-04
 
 ## Requirements
 
@@ -16,9 +18,21 @@ npm install
 
 ## Usage
 
+### WhatsApp Bot
+
+Start the WhatsApp bot:
+
+```bash
+npm run whatsapp
+```
+
+On first run, scan the QR code with your WhatsApp app to authenticate. Credentials are saved in `auth_info/` directory for future sessions.
+
+Once connected, any message received will be processed by Ollama and the response will be sent back automatically.
+
 ### Web Interface
 
-Start the server:
+Start the web server:
 
 ```bash
 npm start
@@ -44,6 +58,17 @@ console.log(response.message.content);
 ```bash
 npm run example
 ```
+
+## Configuration
+
+Environment variables:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | `3000` | Web server port |
+| `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama API URL |
+| `DEFAULT_MODEL` | `qwen3:14b` | Default model for chat |
+| `WHATSAPP_AUTH_DIR` | `auth_info` | Directory for WhatsApp credentials |
 
 ## API Endpoints
 
